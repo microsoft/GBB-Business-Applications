@@ -1,14 +1,44 @@
-# Project
+# GBB-Business-Applications
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Welcome to the Global Black Belt Business Applications Demo Repository.  This repository was created to showcase sample solutions that run in the Power Platform and D365 in our various cloud offerings. 
 
-As the maintainer of this project, please make a few updates:
+![GBB Biz Apps Logo](https://repository-images.githubusercontent.com/377017613/29d05bf9-5261-4de1-8faf-f6b131203350)
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## Demos
+
+Below is a listing of the sample solutions available.  These sample solution files are meant for demonstration purposes only to quickly showcase various features across our platform.  
+
+| Demo Name
+
+| [D365 Click To Dial From Teams](https://github.com/microsoft/Federal-Business-Applications/blob/main/demos/d365-click-to-dial-teams/README.md)
+
+## Whitepapers - Coming Soon
+
+## Training Resources
+
+### Power Apps / Power Automate
+
+* [App in a Day](https://aka.ms/aiad)
+* [RPA in a Day](https://aka.ms/rpainaday)
+* [Power Platform Learning Paths](https://docs.microsoft.com/en-us/learn/powerplatform/)
+* [Power Platform Center of Excellence Starter Kit](https://docs.microsoft.com/en-us/power-platform/guidance/coe/starter-kit)
+* [Power CAT Adoption Maturity Model](https://powerapps.microsoft.com/en-us/blog/power-cat-adoption-maturity-model-repeatable-patterns-for-successful-power-platform-adoption/)
+* [AI Builder Labs](https://docs.microsoft.com/en-us/ai-builder/learn-ai-builder)
+
+### D365
+
+* [D365 Learning Paths](https://docs.microsoft.com/en-us/learn/dynamics365/)
+* [D365 Certifications](https://docs.microsoft.com/en-us/learn/certifications/browse/?technology=Microsoft%20Dynamics%20365&products=dynamics-365)
+
+### Power BI
+
+* [Power BI Learning Paths](https://docs.microsoft.com/en-us/power-bi/guided-learning/)
+* [Guy in a Cube YouTube Channel](https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w)
+* [Power BI Training Content](https://aka.ms/PBITraining)
+* [Power BI Dashboard in an Hour Lab](https://aka.ms/pbi-diah)
+* [Power BI Paginated Reports in a Day YouTube Training](https://www.youtube.com/playlist?list=PL1N57mwBHtN1icIhpjQOaRL8r9G-wytpT)
+* [Power BI Adoption Framework](https://www.youtube.com/playlist?list=PL1N57mwBHtN0UZbEgLHtA1yxqPlae3B90)
+
 
 ## Contributing
 
