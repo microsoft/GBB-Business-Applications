@@ -2,7 +2,9 @@
 
 Welcome to the Global Black Belt Business Applications Demo Repository.  This repository was created to showcase sample solutions that run in the Power Platform and D365 in our various cloud offerings. 
 
+
 ![GBB Biz Apps Logo](images/gitRepoLogo.jpg)
+
 
 ## Demos
 
@@ -39,6 +41,7 @@ Below is a listing of the sample solutions available.  These sample solution fil
 * [Power BI Paginated Reports in a Day YouTube Training](https://www.youtube.com/playlist?list=PL1N57mwBHtN1icIhpjQOaRL8r9G-wytpT)
 * [Power BI Adoption Framework](https://www.youtube.com/playlist?list=PL1N57mwBHtN0UZbEgLHtA1yxqPlae3B90)
 
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
@@ -47,11 +50,14 @@ the rights to use your contribution. For details, visit https://cla.opensource.m
 
 When you submit a pull request, a CLA bot will automatically determine whether you need to provide
 a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
+
 provided by the bot. You will only need to do this once across all repositories using our CLA.
+
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
 
 ## Contributing Guidelines and Folder Naming Conventions
 
@@ -78,6 +84,7 @@ README.md
 You can decided if you would rather have a ```README.md``` file with Markdown syntax, or if you prefer, you can convert a document into a PDF file and then upload that into the subfolder for the demo/whitepaper.  PDF's will render in the browser when viewed on GitHub.
 
 Lastly, link from this main ```README.md``` page to your new demo/whitepaper and the corresponding ```README.md``` or PDF file.
+
 
 ## Trademarks
 
