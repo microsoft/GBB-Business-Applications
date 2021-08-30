@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphAPI", "GraphAPI.csproj", "{15518AD2-DE62-49E6-8F5A-CA842B21C7B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{68DED284-61CC-4F0E-8F40-B35FD8303A41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphAPI.Test", "..\GraphAPI.Test\GraphAPI.Test.csproj", "{B9D7FAC0-2E46-4759-8072-A7B56740E425}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15518AD2-DE62-49E6-8F5A-CA842B21C7B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15518AD2-DE62-49E6-8F5A-CA842B21C7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15518AD2-DE62-49E6-8F5A-CA842B21C7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15518AD2-DE62-49E6-8F5A-CA842B21C7B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D7FAC0-2E46-4759-8072-A7B56740E425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D7FAC0-2E46-4759-8072-A7B56740E425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D7FAC0-2E46-4759-8072-A7B56740E425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D7FAC0-2E46-4759-8072-A7B56740E425}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9D7FAC0-2E46-4759-8072-A7B56740E425} = {68DED284-61CC-4F0E-8F40-B35FD8303A41}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA2B21A0-997C-4657-A4A5-568EDA53E19F}
+	EndGlobalSection
+EndGlobal
