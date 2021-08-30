@@ -13,6 +13,7 @@ Below is a listing of the sample solutions available.  These sample solution fil
 | Demo Name
 
 | [D365 Click To Dial From Teams](https://github.com/microsoft/Federal-Business-Applications/blob/main/demos/d365-click-to-dial-teams/README.md)
+
 | [Real-Time License Assign with GraphAPI](demos/d365-realtime-license-assign/README.md)
 
 ## Whitepapers - Coming Soon
