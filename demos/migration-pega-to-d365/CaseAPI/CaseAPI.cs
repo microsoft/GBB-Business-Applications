@@ -17,6 +17,8 @@ namespace CaseAPI
 {
     public static class CaseAPI
     {
+
+       
         [FunctionName("CaseAPI")]
         [OpenApiOperation(operationId: "Run", tags: new[] { "name" })]
         [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "code", In = OpenApiSecurityLocationType.Query)]
@@ -27,19 +29,56 @@ namespace CaseAPI
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-
+            
             string caseId = req.Query["case_id"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            caseId = caseId ?? data?.case_id;
+            AutoLoan data = JsonConvert.DeserializeObject<AutoLoan>(requestBody);
+            caseId = caseId ?? data?.pyID;
 
-            string responseMessage = string.IsNullOrEmpty(name)
+            string responseMessage = "";
+
+            if (req.Method.ToUpper() == "GET")
+            {
+
+                // return the case from cosmos
+
+                /*PLACEHOLDER CODE*/
+                responseMessage = string.IsNullOrEmpty(caseId)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
                 : $"Hello, {caseId}. This HTTP triggered function executed successfully.";
+            }
+            else if (req.Method.ToUpper() == "POST")
+            {
+                //handle upsert
+
+                if (data is AutoLoan) {
+
+                    await data.CommitToCosmos(data);
+
+
+
+                    responseMessage = "Case synchronized";
+
+                }
+                else
+                {
+                    responseMessage = "Unable to properly parse the request body";
+                    return new BadRequestObjectResult(responseMessage);
+                }
+
+                                
+            }
+            else {
+                responseMessage = "This method is not supported";
+                return new BadRequestObjectResult(responseMessage);
+            }
 
             return new OkObjectResult(responseMessage);
         }
+
+        
+        
     }
 }
 

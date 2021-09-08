@@ -10,7 +10,7 @@ namespace CaseAPI.PegaClasses
     {
         public string pyLabel { get; set; }
         public string pyNote { get; set; }
-        public DateTime pxCreateDateTime { get; set; }
+        public string pxCreateDateTime { get; set; }
         public string pzInsKey { get; set; }
         public string pyTemplateDisplayText { get; set; }
         public override string ToString()
