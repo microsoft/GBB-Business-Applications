@@ -13,6 +13,7 @@ namespace CaseAPI.PegaClasses
     {
         public int LoanAmount { get; set; }
         public int PurchasePrice { get; set; }
+        public string PdfImage { get; set; }
         public Address Address { get; set; }
         public Applicant Applicant { get; set; }
         public Income Income { get; set; }
