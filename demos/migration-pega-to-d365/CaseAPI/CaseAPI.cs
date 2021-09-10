@@ -1,5 +1,6 @@
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,8 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using CaseAPI.PegaClasses;
 using Microsoft.Azure.Cosmos;
+using CaseAPI.Model;
+using Newtonsoft.Json;
 
 namespace CaseAPI
 {
@@ -23,58 +26,80 @@ namespace CaseAPI
         [OpenApiOperation(operationId: "Run", tags: new[] { "name" })]
         [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "code", In = OpenApiSecurityLocationType.Query)]
         [OpenApiParameter(name: "case_id", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **Case ID** parameter")]
-        [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
-        public static async Task<IActionResult> Run(
+        [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Description = "The OK response")]
+        public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            //log.LogInformation("C# HTTP trigger function processed a request for " );
             
             string caseId = req.Query["case_id"];
+
+            log.LogInformation("C# HTTP trigger function processed a request for {0}.", caseId);
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             AutoLoan data = JsonConvert.DeserializeObject<AutoLoan>(requestBody);
             caseId = caseId ?? data?.pyID;
-
             string responseMessage = "";
+            bool err = false;
 
+            
             if (req.Method.ToUpper() == "GET")
             {
 
-                // return the case from cosmos
+                AutoLoan autoLoan = new AutoLoan();
 
-                /*PLACEHOLDER CODE*/
-                responseMessage = string.IsNullOrEmpty(caseId)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {caseId}. This HTTP triggered function executed successfully.";
+                autoLoan = await autoLoan.GetFromCosmos(caseId);
+
+                return new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(autoLoan, Formatting.Indented),System.Text.Encoding.UTF8,"application/json")
+                };
+
+                //responseMessage = autoLoan.ToString();              
+                                
             }
             else if (req.Method.ToUpper() == "POST")
             {
-                //handle upsert
-
+                
                 if (data is AutoLoan) {
 
                     await data.CommitToCosmos(data);
 
+                    ServiceBus serviceBus = new ServiceBus();
 
-
+                    await serviceBus.SendAsync(data.pyID);
+                    
                     responseMessage = "Case synchronized";
 
                 }
                 else
                 {
+                    err = true;
                     responseMessage = "Unable to properly parse the request body";
-                    return new BadRequestObjectResult(responseMessage);
+                    
                 }
 
                                 
             }
             else {
+                err = true;
                 responseMessage = "This method is not supported";
-                return new BadRequestObjectResult(responseMessage);
+                
             }
 
-            return new OkObjectResult(responseMessage);
+            return err
+                ? new HttpResponseMessage(HttpStatusCode.BadRequest) {
+
+                    Content = new StringContent(JsonConvert.SerializeObject(responseMessage))
+                }
+                : new HttpResponseMessage(HttpStatusCode.OK) {
+
+                    Content = new StringContent(JsonConvert.SerializeObject(responseMessage))
+
+                };
+            
+            
         }
 
         

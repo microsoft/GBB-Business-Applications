@@ -51,5 +51,28 @@ namespace CaseAPI.Model
 
             
         }
+
+        public async Task<Case> GetExistingCase (string caseId, PartitionKey partitionKey) {
+
+            CosmosClient cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+            database = cosmosClient.GetDatabase(databaseId);
+            container = database.GetContainer(containerId);
+
+            ItemResponse<Case> itemResponse =  await container.ReadItemAsync<Case>(caseId, partitionKey);
+            
+            return itemResponse.Resource;
+        }
+
+        public async Task<AutoLoan> GetExistingAutoLoan(string caseId, PartitionKey partitionKey)
+        {
+
+            CosmosClient cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+            database = cosmosClient.GetDatabase(databaseId);
+            container = database.GetContainer(containerId);
+
+            ItemResponse<AutoLoan> itemResponse = await container.ReadItemAsync<AutoLoan>(caseId, partitionKey);
+
+            return itemResponse.Resource;
+        }
     }
 }

@@ -29,15 +29,27 @@ namespace CaseAPI.PegaClasses
         public async Task CommitToCosmos(AutoLoan autoLoan) {
 
             autoLoan.id = autoLoan.pyID;
-            autoLoan.partitionId = autoLoan.Applicant.LastName;
-            autoLoan.LastName = partitionId;
+            autoLoan.caseType = "AutoLoan";
+            autoLoan.partitionId = autoLoan.caseType;
+            
 
             CosmosDB cosmosDB = new CosmosDB();
 
             await cosmosDB.CreateOrUpdateItemAsync(autoLoan);
 
-            ServiceBus serviceBus = new ServiceBus();
-            await serviceBus.SendAsync(autoLoan.pyID);
+            
+        }
+
+        public async Task<AutoLoan> GetFromCosmos(string caseId) {
+
+            PartitionKey partitionKey = new PartitionKey("AutoLoan");
+
+            CosmosDB cosmosDB = new CosmosDB();
+
+            AutoLoan autoLoan = await cosmosDB.GetExistingAutoLoan(caseId, partitionKey);
+
+            return autoLoan;
+        
         }
     }
 }

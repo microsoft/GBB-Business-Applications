@@ -12,6 +12,7 @@ namespace CaseAPI.PegaClasses
         public string pyStatusWork { get; set; }
         public string pxCurrentStageLabel { get; set; }
         public string id { get; set; }
+        public string caseType { get; set; }
         public string partitionId { get; set; }
         public override string ToString()
         {
