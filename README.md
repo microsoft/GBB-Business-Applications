@@ -16,6 +16,8 @@ Below is a listing of the sample solutions available.  These sample solution fil
 
 | [Real-Time License Assign with GraphAPI](demos/d365-realtime-license-assign/README.md)
 
+| [Pega Migration to Dataverse](demos/migration-pega-to-d365/README.md)
+
 ## Whitepapers - Coming Soon
 
 ## Training Resources
