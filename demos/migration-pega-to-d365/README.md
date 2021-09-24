@@ -27,7 +27,7 @@ The pattern implemented in this scenario allows for maximum fault-tolerance and 
     * Azure Logic Apps - Provides a no-code interface for mapping the Pega case data into Dataverse
     * Dataverse - provides access to the migrated data via its highly extensible, low-code/no-code tool set.
 
-   ![Pega Migration Pattern](/images/MigrationPattern.png)
+   ![Pega Migration Pattern](images/MigrationPattern.png)
 
 ## Solution Steps
 
