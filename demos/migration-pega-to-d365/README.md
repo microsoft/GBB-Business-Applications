@@ -1,5 +1,5 @@
 # Real-Time Migration of Pega to Dataverse
-> When faced with the scenario of migrating an existing application from the Pega platform to a Dataverse solution, there is often a misconception that this is no possible due to Pega's proprietary method of handling case data.
+> When faced with the scenario of migrating an existing application from the Pega platform to a Dataverse solution, there is often a misconception that this is not possible due to Pega's proprietary method of handling case data.
 This solution details the necessary steps to create a fault-tolerant, scalable migration pattern that provides maximum flexibility.
 
 ## Pega Overview 
