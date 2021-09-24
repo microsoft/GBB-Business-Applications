@@ -20,6 +20,7 @@ Pega applications support a complex object model that allows for great flexibili
 ## Solution Explanation
 
 The pattern implemented in this scenario allows for maximum fault-tolerance and flexibility in migration timelines. As one-time data sync can be error prone, requiring down-time and precise cutover steps, this approach allows both Pega and Dataverse to synchronize in real-time & stay in-sync as end users are migrated over. There are several core technologies used in this process.
+
     * Azure CosmosDB - This NoSQL database is used to maintain an always up-to-date copy of the Pega case object.
     * Azure Service Bus - Used for messaging, to control when Dataverse should be updated
     * Azure Functions - Provides a scalable, cost-effective middleware API layer that can easily scale 
