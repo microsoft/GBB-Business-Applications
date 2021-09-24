@@ -9,9 +9,9 @@ namespace CaseAPI.Model
     class ServiceBus
     {
         string connectionString = Environment.GetEnvironmentVariable("ServiceBusConnectionString");
-        string queueName = Environment.GetEnvironmentVariable("ServiceBusQueueName");
+        //string queueName = Environment.GetEnvironmentVariable("ServiceBusQueueName");
 
-        public async Task SendAsync(dynamic message) {
+        public async Task SendAsync(dynamic message, string queueName) {
 
             await using var client = new ServiceBusClient(connectionString);
             ServiceBusSender sender = client.CreateSender(queueName);

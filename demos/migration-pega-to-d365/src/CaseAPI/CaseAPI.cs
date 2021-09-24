@@ -68,7 +68,7 @@ namespace CaseAPI
 
                     ServiceBus serviceBus = new ServiceBus();
 
-                    await serviceBus.SendAsync(data.pyID);
+                    await serviceBus.SendAsync(data.pyID, "pegaautoloans");
                     
                     responseMessage = "Case synchronized";
 
@@ -102,8 +102,58 @@ namespace CaseAPI
             
         }
 
-        
-        
+
+        [FunctionName("CaseAttachmentsAPI")]
+        [OpenApiOperation(operationId: "SyncAttachment", tags: new[] { "name" })]
+        [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "code", In = OpenApiSecurityLocationType.Query)]
+        [OpenApiParameter(name: "case_id", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **Case ID** parameter")]
+        [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Description = "The OK response")]
+        public static async Task<HttpResponseMessage> SyncAttachment([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
+        {
+
+            string caseId = req.Query["case_id"];
+
+            log.LogInformation("C# HTTP trigger function processed a request for {0}.", caseId);
+
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            Attachment data = JsonConvert.DeserializeObject<Attachment>(requestBody);
+            caseId = caseId ?? data?.ReferenceCaseID;
+            string responseMessage = "";
+            bool err = false;
+
+            if (req.Method.ToUpper() == "GET")
+            {
+                //Not implemented
+                responseMessage = "GET Method not implemented yet";
+
+            }
+            else if (req.Method.ToUpper() == "POST") {
+
+                ServiceBus serviceBus = new ServiceBus();
+
+                string dataString = data.ToString();
+
+                await serviceBus.SendAsync(dataString, "pegaattachments");
+
+                responseMessage = "Attachment Queued";
+            }
+
+            return err
+                ? new HttpResponseMessage(HttpStatusCode.BadRequest)
+                {
+
+                    Content = new StringContent(JsonConvert.SerializeObject(responseMessage))
+                }
+                : new HttpResponseMessage(HttpStatusCode.OK)
+                {
+
+                    Content = new StringContent(JsonConvert.SerializeObject(responseMessage))
+
+                };
+
+        }
+
     }
 }
 
